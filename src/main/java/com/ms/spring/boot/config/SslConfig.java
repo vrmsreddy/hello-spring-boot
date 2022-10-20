@@ -16,7 +16,9 @@ import java.security.cert.X509Certificate;
 
 @Configuration
 public class SslConfig {
-
+    
+    //Refer this "https://www.javacodemonk.com/disable-ssl-validation-in-spring-resttemplate-e2c53583"
+    
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) throws NoSuchAlgorithmException, KeyManagementException {
 
