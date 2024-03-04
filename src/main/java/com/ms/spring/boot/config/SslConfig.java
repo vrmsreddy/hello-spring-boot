@@ -45,4 +45,34 @@ public class SslConfig {
         customRequestFactory.setHttpClient(httpClient);
         return builder.requestFactory(() -> customRequestFactory).build();  
     }
+    
+    /*
+    @Bean
+    public RestTemplate restTemplate() throws Exception {
+        RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
+        restTemplate.setErrorHandler(
+                new DefaultResponseErrorHandler() {
+                    @Override
+                    protected boolean hasError(HttpStatus statusCode) {
+                        return false;
+                    }
+                });
+
+        return restTemplate;
+    }
+
+    private ClientHttpRequestFactory clientHttpRequestFactory() throws Exception {
+        return new HttpComponentsClientHttpRequestFactory(httpClient());
+    }
+
+    private HttpClient httpClient() throws Exception {
+        // Load our keystore and truststore containing certificates that we trust.
+        SSLContext sslcontext =
+                SSLContexts.custom().loadTrustMaterial(trustStore.getFile(), trustStorePassword.toCharArray())
+                        .loadKeyMaterial(keyStore.getFile(), keyStorePassword.toCharArray(),
+                                keyPassword.toCharArray()).build();
+        SSLConnectionSocketFactory sslConnectionSocketFactory =
+                new SSLConnectionSocketFactory(sslcontext, new NoopHostnameVerifier());
+        return HttpClients.custom().setSSLSocketFactory(sslConnectionSocketFactory).build();
+    } */
 }
